@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R18 Calculator</title>
+
+    <style>
+        .main{
+            width: fit-content;
+            height: fit-content;
+            border: 5px solid;
+            border-style:ridge;
+            border-color: brown;
+        }
+        div,button{
+            padding: 0% 5%;
+            font-family:'Times New Roman', Times, serif;
+            font-size: large;
+        }
+        div p{
+            font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            text-decoration: overline underline;
+            text-align: center;
+        }
+        table{
+            font-family:cursive;
+        }
+        input{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main">
+        <p> R18 Calculator</p>
+        <span style="font-style: italic;">Note: Only capital letters and '+' is allowed</span>
+        <br>    
+        <br>
+        <table>
+            <tr><td></td><td style="text-align: center;">Grade</td><td>Credits</td></tr>
+            <tr><td>Subject 1 </td>
+                <td><input type="text" maxlength="2" size="5" class="subject"/></td>
+                <td><input type="number" maxlength="2" size="5"  class="credit"/></td>
+            </tr>
+            <tr><td>Subject 2 </td><td>
+                <input type="text" maxlength="2" size="5" class="subject"/></td>
+                <td><input type="number" size="5"  class="credit"/></td>
+            </tr>
+            <tr><td>Subject 3</td><td>
+                <input type="text" maxlength="2" size="5" class="subject"/></td>
+                <td><input type="number" maxlength="2" size="5" class="credit"/></td>
+            </tr>
+            <tr><td>Subject 4     </td><td>
+                <input type="text" maxlength="2" size="5" class="subject"/></td>
+                <td><input type="number" maxlength="2" size="5" class="credit"/></td>
+            </tr>
+            <tr><td>Subject 5     </td><td>
+                <input type="" maxlength="2" size="5" class="subject"/></td>
+                <td><input type="number" maxlength="2"size="5"  class="credit"/></td>
+            </tr>
+            <tr><td>Subject 6   </td><td>
+                <input type="text" maxlength="2" size="5" class="subject"/></td>
+                <td><input type="number" maxlength="2" size="5" class="credit"/></td>
+            </tr>
+            <tr><td>Subject 7         </td><td>
+                <input type="text" maxlength="2" size="5" class="subject"/></td>
+                <td><input type="number" maxlength="2"size="5"  class="credit"/></td>
+            </tr>
+            <tr><td>Subject 8     </td><td>
+                <input type="text" maxlength="2"size="5"  class="subject"/></td>
+                <td><input type="number" maxlength="2"size="5"  class="credit"/></td>
+            </tr>
+            <tr><td><br></td></tr>
+            <tr><td><button id="calculate" onclick="oclick()">Calculate</button></td><td><textarea name="res" id="result" cols="10" rows="1"></textarea></td></tr>
+        </table><br>
+    </div>
+
+    <script>
+        function oclick(){
+            var subj = document.getElementsByClassName('subject');
+            var sum = 0;
+            var grade = {"O":10,"A+":9,"A":8,"B+":7,"B":6,"C":5,"F":0};
+            var credits = document.getElementsByClassName('credit');
+            let totalCredits = 0;
+            for(let i=0;i<subj.length;i++){
+                if(subj[i].value){
+                    sum += (grade[subj[i].value]*(credits[i].value));
+                    totalCredits += Number(credits[i].value);
+                }
+            }
+            document.getElementById('result').value = sum/totalCredits;
+        }
+    </script>
+</body>
+
+</html>
